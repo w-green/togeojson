@@ -47,8 +47,10 @@ toGeoJSON = (function() {
     }
     function coordPair(x) {
         var ll = [attrf(x, 'lon'), attrf(x, 'lat')],
-            ele = get1(x, 'ele');
+            ele = get1(x, 'ele'),
+            time = get1(x, 'time');
         if (ele) ll.push(parseFloat(nodeVal(ele)));
+        if (time) ll.push(new Date(nodeVal(time)));
         return ll;
     }
 
